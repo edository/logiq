@@ -7,6 +7,9 @@ import router from './router'
 // import tailwind css
 import './index.css'
 
+// import flowbite
+import 'flowbite'
+
 const app = createApp(App)
 
 app.use(createPinia())
