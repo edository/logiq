@@ -2,18 +2,24 @@
 
 import { ref } from "vue";
 import { TransitionRoot, TransitionChild, Dialog, DialogOverlay, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { MenuIcon, XIcon, CalendarIcon, ChatIcon, ClipboardListIcon, ClockIcon, UserGroupIcon, HomeIcon, SearchIcon } from '@heroicons/vue/outline'
+import { MenuIcon, XIcon, TruckIcon, UserGroupIcon, HomeIcon, SearchIcon, ShoppingBagIcon, DocumentIcon, ReceiptTaxIcon, CollectionIcon, CreditCardIcon } from '@heroicons/vue/outline'
 
 const mainNavigation = ref([
   { href: '/', label: 'Home', icon: HomeIcon },
-  { href: '/', label: 'User maintenance', icon: UserGroupIcon }
+  { href: '/', label: 'User Maintenance', icon: UserGroupIcon }
 ])
 
-const libraryNavigation = ref([
-  { href: '/', label: 'Favorites', icon: UserGroupIcon },
-  { href: '/', label: 'Watch later', icon: ClockIcon },
-  { href: '/', label: 'History', icon: ClipboardListIcon },
-  { href: '/', label: 'Scheduled', icon: CalendarIcon },
+const orderManagementNav = ref([
+  { href: '/', label: 'Sales Order', icon: ShoppingBagIcon },
+  { href: '/', label: 'Delivery Order', icon: DocumentIcon },
+  { href: '/', label: 'Shipping Order', icon: TruckIcon }
+])
+
+const accountReceivableNav = ref([
+  { href: '/', label: 'AR Invoice', icon: ReceiptTaxIcon },
+  { href: '/', label: 'AR Others', icon: DocumentIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'Credit Note', icon: CreditCardIcon }
 ])
 
 const following = ref([
@@ -63,10 +69,10 @@ const openChildMenu2 = ref(false);
               </div>
               <div class="mb-10">
                 <h3 class="mx-6 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-                  Library
+                  Order Processing
                 </h3>
 
-                <a v-for="(item, index) in libraryNavigation" :href="item.href" :key="index"
+                <a v-for="(item, index) in orderManagementNav" :href="item.href" :key="index"
                   class="flex items-center px-6 py-2.5 text-gray-500 hover:text-orange-600 group">
                   <component :is="item.icon" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-orange-500" />
                   {{ item.label }}
@@ -74,13 +80,14 @@ const openChildMenu2 = ref(false);
               </div>
               <div class="mb-10">
                 <h3 class="mx-6 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-                  Following
+                  Account Receivable
                 </h3>
 
 
-                <a v-for="(item, index) in following" :href="item.href" :key="index"
+                <a v-for="(item, index) in accountReceivableNav" :href="item.href" :key="index"
                   class="flex items-center px-6 py-2.5 text-gray-500 hover:text-orange-600 group">
-                  <img :src="item.imageUrl" alt="" class="mr-2 rounded-full w-7 h-7">
+                  <component :is="item.icon" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-orange-500" />
+                  <!-- <img :src="item.imageUrl" alt="" class="mr-2 rounded-full w-7 h-7"> -->
                   {{ item.label }}
                 </a>
               </div>
@@ -117,12 +124,13 @@ const openChildMenu2 = ref(false);
         </a>
 
       </div>
+
       <div class="mb-10">
         <h3 class="mx-6 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-          Library
+          Order Processing
         </h3>
 
-        <a v-for="(item, index) in libraryNavigation" :href="item.href" :key="index"
+        <a v-for="(item, index) in orderManagementNav" :href="item.href" :key="index"
           class="flex items-center px-6 py-2.5 text-gray-500 hover:text-orange-600 group">
           <component :is="item.icon" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-orange-500" />
           {{ item.label }}
@@ -131,12 +139,13 @@ const openChildMenu2 = ref(false);
       </div>
       <div class="mb-10">
         <h3 class="mx-6 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-          Following
+          Account Receivable
         </h3>
 
-        <a v-for="(item, index) in following" :href="item.href" :key="index"
+        <a v-for="(item, index) in accountReceivableNav" :href="item.href" :key="index"
           class="flex items-center px-6 py-2.5 text-gray-500 hover:text-orange-600 group">
-          <img :src="item.imageUrl" alt="" class="mr-2 rounded-full w-7 h-7">
+          <component :is="item.icon" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-orange-500" />
+          <!-- <img :src="item.imageUrl" alt="" class="mr-2 rounded-full w-7 h-7"> -->
           {{ item.label }}
         </a>
 
@@ -157,7 +166,7 @@ const openChildMenu2 = ref(false);
           <form action="" class="w-full max-w-md">
             <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
               <SearchIcon class="absolute w-5 h-5 ml-3 pointer-events-none" />
-              <input type="text" name="search" placeholder="Search talk" autocomplete="off" aria-label="Search talk"
+              <input type="text" name="search" placeholder="Search here.." autocomplete="off" aria-label="Search here.."
                 class="w-full py-2 pl-10 pr-3 font-semibold text-black placeholder-gray-500 border-none rounded-2xl ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2">
             </div>
           </form>
@@ -181,9 +190,6 @@ const openChildMenu2 = ref(false);
               <MenuItem v-slot="{ active, disabled }" disabled>
               <a href="#" :class="{ 'bg-gray-100': active, 'opacity-40': disabled }"
                 class="block px-4 py-2 text-sm text-gray-700">Settings</a>
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
-              <a href="#" :class="{ 'bg-gray-100': active }" class="block px-4 py-2 text-sm text-gray-700">Help</a>
               </MenuItem>
               <MenuItem v-slot="{ active }">
               <a href="#" :class="{ 'bg-gray-100': active }" class="block px-4 py-2 text-sm text-gray-700">Log out</a>
