@@ -19,6 +19,15 @@ const accountReceivableNav = ref([
   { href: '/', label: 'AR Invoice', icon: ReceiptTaxIcon },
   { href: '/', label: 'AR Others', icon: DocumentIcon },
   { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
+  { href: '/', label: 'AR Collection', icon: CollectionIcon },
   { href: '/', label: 'Credit Note', icon: CreditCardIcon }
 ])
 
@@ -35,7 +44,7 @@ const openChildMenu2 = ref(false);
 </script>
 
 <template>
-  <div class="flex min-h-screen">
+  <div class="flex h-screen">
 
     <!-- Mobile sidebar start -->
     <TransitionRoot :show="sidebarOpened">
@@ -104,7 +113,7 @@ const openChildMenu2 = ref(false);
     <!-- Mobile sidebar end -->
 
     <!-- Desktop sidebar start -->
-    <div class="hidden w-64 border-r border-gray-200 md:block bg-gray-50">
+    <div class="flex-shrink-0 hidden w-64 overflow-y-auto border-r border-gray-200 md:block bg-gray-50">
 
       <div class="px-6 py-4">
         <a href="#">
@@ -163,13 +172,21 @@ const openChildMenu2 = ref(false);
             type="button" value="Open Sidebar">
             <MenuIcon class="w-6 h-6" />
           </button>
-          <form action="" class="w-full max-w-md">
+
+          <!-- Searchbar start-->
+          <!-- <form action="" class="w-full max-w-md">
             <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
               <SearchIcon class="absolute w-5 h-5 ml-3 pointer-events-none" />
               <input type="text" name="search" placeholder="Search here.." autocomplete="off" aria-label="Search here.."
                 class="w-full py-2 pl-10 pr-3 font-semibold text-black placeholder-gray-500 border-none rounded-2xl ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2">
             </div>
-          </form>
+          </form> -->
+          <!-- Searchbar end-->
+
+          <div class="w-full max-w-md text-gray-400">
+            <span>PT. Mitra Bersama Jaya</span>
+          </div>
+
         </div>
         <Menu as="div" class="relative flex-shrink-0">
           <MenuButton class="rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
